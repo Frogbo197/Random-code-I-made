@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎃 Thì Quá Khứ Đơn - Halloween Spooky Edition 👻</title>
+    <style>
+        body {
+            font-family: "Comic Sans MS", "Arial", sans-serif;
+            margin: 20px;
+            background: linear-gradient(to bottom, #3a0f72, #f4a261);
+            color: #fff;
+            line-height: 1.6;
+            animation: fadeIn 1s ease-in;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Hiệu ứng lá bí ngô rơi */
+        .pumpkin-leaf {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23ff9500" d="M50 15 C65 15 75 25 75 40 C75 55 65 65 50 65 C35 65 25 55 25 40 C25 25 35 15 50 15 Z"/><path fill="%23414141" d="M45 20 L40 5 L60 5 L55 20 Z"/></svg>') no-repeat center;
+            background-size: contain;
+            z-index: 1000;
+            pointer-events: none;
+            animation: fall 10s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            background: #ff6f61;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            font-size: 2.2em;
+            position: relative;
+        }
+
+            h1::before, h1::after {
+                content: "🦇";
+                position: absolute;
+                top: 10px;
+            }
+
+            h1::before {
+                left: 20px;
+            }
+
+            h1::after {
+                right: 20px;
+            }
+
+        h2 {
+            color: #ffca3a;
+            margin-top: 25px;
+            font-size: 1.8em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+            h2::before {
+                content: "🎃";
+            }
+
+        p {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+
+        .box {
+            background: #2a1b4e;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .box::before {
+                content: "👻";
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 2em;
+                opacity: 0.3;
+            }
+
+        .highlight {
+            background: #fffbea;
+            border-left: 6px solid #ff6f61;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #2a2a72;
+        }
+
+            .highlight::before {
+                content: "🕸️";
+            }
+
+        ul {
+            list-style: none;
+            margin-left: 20px;
+        }
+
+            ul li {
+                padding: 8px 0;
+                font-size: 1.1em;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+                ul li::before {
+                    content: "🕷️";
+                }
+
+        .verbs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .verb-card {
+            background: #5a189a;
+            border: 2px solid #ffca3a;
+            padding: 15px;
+            text-align: center;
+            border-radius: 12px;
+            font-weight: bold;
+            color: #fff;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+            .verb-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+                background: #7b2cbf;
+            }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #fffbea;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        th {
+            background: #ff6f61;
+            color: #fff;
+            padding: 15px;
+            font-size: 1.2em;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #f0e5d8;
+            text-align: center;
+            font-size: 1.1em;
+            color: #2a2a72;
+        }
+
+        tr:nth-child(even) {
+            background: #fff5e6;
+        }
+
+        tr:hover {
+            background: #ffe0b3;
+        }
+
+        .example {
+            background: #fff3e0;
+            border: 2px dashed #ff6f61;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #2a2a72;
+        }
+
+            .example::before {
+                content: "🕸️";
+            }
+
+        .learn-more, .game-button, .reset-button {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 25px;
+            background: #ff6f61;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+            .learn-more:hover, .game-button:hover, .reset-button:hover {
+                transform: scale(1.1);
+                background: #e63946;
+            }
+
+            .learn-more::before, .game-button::before, .reset-button::before {
+                content: "🎃 ";
+            }
+
+        .game-section {
+            background: #2a1b4e;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+            .game-section img {
+                max-width: 100px;
+                margin: 10px auto;
+                display: block;
+                border-radius: 10px;
+                transition: transform 0.3s;
+            }
+
+                .game-section img:hover {
+                    transform: scale(1.1);
+                }
+
+        .game-input {
+            padding: 10px;
+            font-size: 1em;
+            border: 2px solid #ffca3a;
+            border-radius: 8px;
+            margin: 10px;
+            width: 200px;
+        }
+
+        .game-feedback {
+            font-size: 1.1em;
+            margin-top: 10px;
+            color: #ffca3a;
+            transition: opacity 0.5s;
+            min-height: 24px;
+        }
+
+        .game-option {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background: #5a189a;
+            border: 2px solid #ffca3a;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.2s;
+            color: #fff;
+        }
+
+            .game-option:hover {
+                background: #7b2cbf;
+            }
+
+            .game-option.correct {
+                background: #d4edda;
+                color: #333;
+            }
+
+            .game-option.incorrect {
+                background: #f8d7da;
+                color: #333;
+            }
+
+        .gif-container {
+            display: inline-block;
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+
+            .gif-container:hover {
+                transform: scale(1.1);
+            }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+                padding: 15px;
+            }
+
+                h1::before, h1::after {
+                    position: static;
+                    display: block;
+                    text-align: center;
+                    margin: 10px 0;
+                }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .game-input {
+                width: 80%;
+            }
+
+            .verbs {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+
+            .pumpkin-leaf {
+                width: 20px;
+                height: 20px;
+            }
+
+            .example {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hiệu ứng lá bí ngô rơi -->
+    <div class="pumpkin-leaf" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="pumpkin-leaf" style="left: 30%; animation-delay: 2s;"></div>
+    <div class="pumpkin-leaf" style="left: 50%; animation-delay: 4s;"></div>
+    <div class="pumpkin-leaf" style="left: 70%; animation-delay: 6s;"></div>
+    <div class="pumpkin-leaf" style="left: 90%; animation-delay: 8s;"></div>
+
+    <h1>🎃 Thì Quá Khứ Đơn - Halloween Spooky Edition 👻</h1>
+
+    <div class="box">
+        <h2>1. Khi nào dùng thì quá khứ đơn?</h2>
+        <div class="highlight">
+            Dùng để kể chuyện, nói về việc đã xảy ra trong quá khứ.
+        </div>
+        <p><b>Ví dụ:</b></p>
+        <ul>
+            <li>Hôm qua mình hóa trang thành phù thủy.</li>
+            <li>Halloween năm ngoái, mình đi xin kẹo.</li>
+        </ul>
+        <div class="highlight">
+            Dùng để nói về thói quen trong quá khứ (bây giờ không còn làm nữa).
+        </div>
+        <p><b>Ví dụ:</b></p>
+        <ul>
+            <li>Khi còn nhỏ, mình thường chơi trò ma quỷ vào Halloween.</li>
+        </ul>
+        <div class="example">
+            Last Halloween, I <b>dressed</b> up as a spooky ghost! 👻
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3NjBlOHpidG03MGU3anlxNnU3bmp4bW5sbHh3ZHVzc2d0eHRodmtzayZlcD12MV9naWZzX3NlYXJjaCZjdD1n/h0wQjzknmeBAWms7P5/giphy.gif" alt="Ghost Halloween" width="80">
+            </div>
+        </div>
+    </div>
+
+    <div class="box">
+        <h2>2. Cấu trúc động từ thường</h2>
+        <table>
+            <tr>
+                <th>Loại câu</th>
+                <th>Cấu trúc</th>
+                <th>Ví dụ</th>
+            </tr>
+            <tr>
+                <td>Khẳng định</td>
+                <td>S + V2/ed + O</td>
+                <td>She <b>carved</b> a pumpkin yesterday.</td>
+            </tr>
+            <tr>
+                <td>Phủ định</td>
+                <td>S + did not (didn't) + V1</td>
+                <td>They <b>didn't eat</b> all the candy.</td>
+            </tr>
+            <tr>
+                <td>Nghi vấn</td>
+                <td>Did + S + V1 + O?</td>
+                <td><b>Did</b> you <b>visit</b> the haunted house?</td>
+            </tr>
+            <tr>
+                <td>Câu hỏi với từ để hỏi</td>
+                <td>Wh + did + S + V nguyên mẫu + ...?</td>
+                <td><b>What did</b> you <b>do</b> at the Halloween party last week?</td>
+            </tr>
+        </table>
+        <div class="example">
+            <b>What did</b> you <b>wear</b> to the costume party? 🎭
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3NjBlOHpidG03MGU3anlxNnU3bmp4bW5sbHh3ZHVzc2d0eHRodmtzayZlcD12MV9naWZzX3NlYXJjaCZjdD1n/h0wQjzknmeBAWms7P5/giphy.gif" alt="Pumpkin Dog" width="80">
+            </div>
+        </div>
+    </div>
+
+    <div class="box">
+        <h2>3. Cấu trúc động từ "To be"</h2>
+        <table>
+            <tr>
+                <th>Loại câu</th>
+                <th>Cấu trúc</th>
+                <th>Ví dụ</th>
+            </tr>
+            <tr>
+                <td>Khẳng định</td>
+                <td>S + was/were + N/Adj</td>
+                <td>She <b>was</b> a witch last Halloween.</td>
+            </tr>
+            <tr>
+                <td>Phủ định</td>
+                <td>S + was not/were not + N/Adj</td>
+                <td>They <b>weren't</b> scared of the ghost.</td>
+            </tr>
+            <tr>
+                <td>Nghi vấn</td>
+                <td>Was/Were + S + N/Adj?</td>
+                <td><b>Was</b> the party spooky?</td>
+            </tr>
+            <tr>
+                <td>Nghi vấn phủ định</td>
+                <td>Wasn't/Weren't + S + N/Adj?</td>
+                <td><b>Wasn't</b> the haunted house fun?</td>
+            </tr>
+            <tr>
+                <td>Câu hỏi với từ để hỏi</td>
+                <td>Wh + was/were + S + N/Adj/Prep + ...?</td>
+                <td><b>What was</b> your favorite costume as a child?</td>
+            </tr>
+        </table>
+        <div class="example">
+            <b>Where were</b> you during the Halloween festival? 🦇
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bGEwN3F6N3RsNzJ0ajMybmtjZ3h4cjNsczcyemx1ZHJqd2d6N3NtNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/yIMqpdjSN4ESnPwD9Z/giphy.gif" alt="Owl Halloween" width="80">
+            </div>
+        </div>
+    </div>
+
+    <div class="box">
+        <h2>4. Dấu hiệu nhận biết</h2>
+        <ul>
+            <li>yesterday (hôm qua)</li>
+            <li>last week/last month/last year</li>
+            <li>in the past (trong quá khứ)</li>
+            <li>this morning/this afternoon (khi đã qua rồi)</li>
+        </ul>
+        <div class="example">
+            Last Halloween, we <b>decorated</b> the house with spooky lights! 💡
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3OGk5M29hajBpeHNycWE0bDgzOW5jcGw0bndyYnBha2c4Z2s5ejJ5biZlcD12MV9naWZzX3NlYXJjaCZjdD1n/YtyM339Y3mLiPlUntX/giphy.gif" alt="Spooky Cat" width="80">
+            </div>
+        </div>
+    </div>
+
+    <div class="box">
+        <h2>5. Một số động từ bất quy tắc thường gặp</h2>
+        <div class="verbs">
+            <div class="verb-card">go → went</div>
+            <div class="verb-card">see → saw</div>
+            <div class="verb-card">eat → ate</div>
+            <div class="verb-card">have → had</div>
+            <div class="verb-card">do → did</div>
+            <div class="verb-card">make → made</div>
+            <div class="verb-card">say → said</div>
+            <div class="verb-card">get → got</div>
+            <div class="verb-card">find → found</div>
+            <div class="verb-card">run → ran</div>
+        </div>
+    </div>
+
+    <div class="box game-section">
+        <h2>🎮 Trò Chơi Halloween Luyện Tập Thì Quá Khứ Đơn</h2>
+        <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bHM3bGFuZzBhcDN2MzlweWFkdm5yNnlvemJib3l1M2VtN2hocjlwOSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/OW7jUTtOeQY0g8YBJF/giphy.gif" alt="Black Cat Halloween" width="100">
+
+        <div class="game">
+            <h3>1. Điền dạng quá khứ của động từ</h3>
+            <p>Nhập dạng quá khứ của động từ <b>"make"</b> (tại bữa tiệc Halloween):</p>
+            <input type="text" id="verbInput" class="game-input" placeholder="Nhập đáp án...">
+            <button class="game-button" onclick="checkVerb()">Kiểm tra</button>
+            <p id="verbFeedback" class="game-feedback"></p>
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3eXFweHZyaHI2cXYzMHdkaTJtNGd6OWtzNGk0anVvOGpya2l2ZDMzbCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/FpQkv650gizUWbl3sC/giphy.gif" alt="Pumpkin Dog" width="80">
+            </div>
+        </div>
+
+        <div class="game">
+            <h3>2. Sắp xếp câu đúng</h3>
+            <p>Sắp xếp: <b>last / Halloween / we / carved / pumpkins</b></p>
+            <input type="text" id="sentenceInput" class="game-input" placeholder="Nhập câu hoàn chỉnh...">
+            <button class="game-button" onclick="checkSentence()">Kiểm tra</button>
+            <p id="sentenceFeedback" class="game-feedback"></p>
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3eXFweHZyaHI2cXYzMHdkaTJtNGd6OWtzNGk0anVvOGpya2l2ZDMzbCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/bhP0jGDYXwaO2hFRcI/giphy.gif" alt="Owl Halloween" width="80">
+            </div>
+        </div>
+
+        <div class="game">
+            <h3>3. Chọn đáp án đúng</h3>
+            <p>Last Halloween, she ___ a spooky costume.</p>
+            <div class="game-option" onclick="checkOption('wore', this, true)">wore</div>
+            <div class="game-option" onclick="checkOption('wear', this, false)">wear</div>
+            <div class="game-option" onclick="checkOption('wearing', this, false)">wearing</div>
+            <p id="optionFeedback" class="game-feedback"></p>
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bzUza2kwemFxMDVzemE0aTYwN2t6Zm5jZ2NneXYxazZsMzh2anQ4OCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3o7TKUAOqDm3SQle92/giphy.gif" alt="Spooky Cat" width="80">
+            </div>
+        </div>
+        <button class="reset-button" onclick="resetGames()">Chơi lại</button>
+    </div>
+
+    <button class="learn-more" onclick="alert('Học thêm nào! 🎃')">Học thêm nhé!</button>
+
+    <script>
+        // Tạo âm thanh đơn giản khi trả lời đúng
+        function playCorrectSound() {
+            try {
+                const context = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = context.createOscillator();
+                const gainNode = context.createGain();
+
+                oscillator.connect(gainNode);
+                gainNode.connect(context.destination);
+
+                oscillator.type = 'sine';
+                oscillator.frequency.value = 523.25; // C5
+                gainNode.gain.value = 0.3;
+
+                oscillator.start();
+                gainNode.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 0.5);
+
+                setTimeout(() => {
+                    oscillator.stop();
+                }, 500);
+            } catch (e) {
+                console.log("Audio context not supported");
+            }
+        }
+
+        function checkVerb() {
+            const input = document.getElementById('verbInput').value.trim().toLowerCase();
+            const feedback = document.getElementById('verbFeedback');
+
+            if (input === 'made') {
+                feedback.textContent = '🎃 Chính xác! "Make" trong quá khứ là "made".';
+                feedback.style.color = '#28a745';
+                playCorrectSound();
+            } else {
+                feedback.textContent = '🕸️ Sai rồi! Thử lại nhé, đáp án đúng là "made".';
+                feedback.style.color = '#dc3545';
+            }
+
+            feedback.style.opacity = '0';
+            setTimeout(() => { feedback.style.opacity = '1'; }, 100);
+        }
+
+        function checkSentence() {
+            const input = document.getElementById('sentenceInput').value.trim().toLowerCase().replace(/\s+/g, ' ');
+            const feedback = document.getElementById('sentenceFeedback');
+            const correctAnswer = 'we carved pumpkins last halloween';
+
+            if (input === correctAnswer) {
+                feedback.textContent = '🎃 Tuyệt vời! Câu đúng là: We carved pumpkins last Halloween.';
+                feedback.style.color = '#28a745';
+                playCorrectSound();
+            } else {
+                feedback.textContent = '🕸️ Chưa đúng đâu! Câu đúng là: We carved pumpkins last Halloween.';
+                feedback.style.color = '#dc3545';
+            }
+
+            feedback.style.opacity = '0';
+            setTimeout(() => { feedback.style.opacity = '1'; }, 100);
+        }
+
+        function checkOption(answer, element, isCorrect) {
+            const feedback = document.getElementById('optionFeedback');
+            const options = document.querySelectorAll('.game-option');
+
+            options.forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+                opt.onclick = null; // Disable further clicks
+            });
+
+            if (isCorrect) {
+                element.classList.add('correct');
+                feedback.textContent = '🎃 Đúng rồi! "Wore" là đáp án đúng.';
+                feedback.style.color = '#28a745';
+                playCorrectSound();
+            } else {
+                element.classList.add('incorrect');
+                feedback.textContent = '🕸️ Sai rồi! Đáp án đúng là "wore".';
+                feedback.style.color = '#dc3545';
+
+                // Highlight the correct answer
+                options.forEach(opt => {
+                    if (opt.textContent === 'wore') {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+
+            feedback.style.opacity = '0';
+            setTimeout(() => { feedback.style.opacity = '1'; }, 100);
+        }
+
+        function resetGames() {
+            document.getElementById('verbInput').value = '';
+            document.getElementById('sentenceInput').value = '';
+            document.getElementById('verbFeedback').textContent = '';
+            document.getElementById('sentenceFeedback').textContent = '';
+            document.getElementById('optionFeedback').textContent = '';
+
+            const options = document.querySelectorAll('.game-option');
+            options.forEach(option => {
+                option.classList.remove('correct', 'incorrect');
+                option.onclick = function () {
+                    checkOption(this.textContent, this, this.textContent === 'wore');
+                };
+            });
+        }
+    </script>
+</body>
+</html>
